@@ -36,7 +36,7 @@ class DepartmentService
 
     public function update($companyId, $data = [], $id)
     {
-        $item = Department::where('company_id', $companyId)->findOrFail($id)->update($data);
+        Department::where('company_id', $companyId)->findOrFail($id)->update($data);
     }
 
     public function delete($companyId, $id)
