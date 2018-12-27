@@ -64,7 +64,8 @@ $app->singleton(
 // ]);
 
 $app->routeMiddleware([
-    'auth' => App\Http\Middleware\Authenticate::class,
+    'jwt.auth' => Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+    'jwt.refresh' => Tymon\JWTAuth\Middleware\RefreshToken::class,
 ]);
 
 /*
@@ -79,7 +80,6 @@ $app->routeMiddleware([
 */
 
 // $app->register(App\Providers\AppServiceProvider::class);
-$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 
@@ -92,6 +92,7 @@ $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 |
 */
 
+$app->configure('jwt');
 $app->configure('modules');
 $app->configure('sluggable');
 
