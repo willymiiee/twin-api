@@ -14,8 +14,6 @@ class User extends Resource
      */
     public function toArray($request)
     {
-        $jobTitles = JobTitle::collection($this->jobTitles);
-
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -26,7 +24,7 @@ class User extends Resource
             // 'company' => new Company($jobTitles[0]->company),
             // 'location' => new Location($jobTitles[0]->location),
             // 'department' => new Department($jobTitles[0]->department),
-            // 'job-title' => $jobTitles,
+            'job-title' => JobTitle::collection($this->jobTitles),
             // 'role' => Role::collection($jobTitles[0]->roles),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
