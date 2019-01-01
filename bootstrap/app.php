@@ -59,9 +59,10 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
+$app->middleware([
 //     App\Http\Middleware\ExampleMiddleware::class
-// ]);
+    \Barryvdh\Cors\HandleCors::class,
+]);
 
 $app->routeMiddleware([
     'jwt.auth' => Tymon\JWTAuth\Middleware\GetUserFromToken::class,
@@ -81,6 +82,7 @@ $app->routeMiddleware([
 
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+$app->register(Barryvdh\Cors\ServiceProvider::class);
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 
 /*
@@ -92,6 +94,7 @@ $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 |
 */
 
+$app->configure('cors');
 $app->configure('jwt');
 $app->configure('modules');
 $app->configure('sluggable');
