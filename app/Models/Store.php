@@ -8,7 +8,29 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Store extends Model
 {
     use SoftDeletes;
-    protected $guarded = ['id'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'company_id',
+        'acc_number',
+        'name',
+        'address',
+        'latitude',
+        'longitude',
+        'phone',
+        'subdistrict',
+        'village',
+        'zipcode',
+        'type',
+        'key_person',
+        'payment_type',
+        'term_of_payment',
+        'limit',
+    ];
 
     /**
      * The attributes that should be mutated to dates.

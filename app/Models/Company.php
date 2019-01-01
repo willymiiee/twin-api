@@ -9,7 +9,18 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Company extends Model
 {
     use SoftDeletes, Sluggable;
-    protected $guarded = ['id'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'slug',
+        'about',
+        'logo',
+    ];
 
     /**
      * The attributes that should be mutated to dates.

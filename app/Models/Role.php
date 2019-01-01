@@ -8,7 +8,22 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Role extends Model
 {
     use SoftDeletes;
-    protected $guarded = ['id'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'job_title_id',
+        'module_id',
+        'sub_module_id',
+        'list',
+        'detail',
+        'create',
+        'update',
+        'delete',
+    ];
 
     /**
      * The attributes that should be mutated to dates.

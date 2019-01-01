@@ -11,7 +11,24 @@ class Location extends Model
     const DEFAULT_TIMEZONE  = 'UTC+8';
     const DEFAULT_CURRENCY  = 'IDR';
     const DEFAULT_COUNTRY   = 'ID';
-    protected $guarded = ['id'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'company_id',
+        'name',
+        'address',
+        'latitude',
+        'longitude',
+        'country',
+        'state',
+        'city',
+        'timezone',
+        'currency',
+    ];
 
     /**
      * The attributes that should be mutated to dates.

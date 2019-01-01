@@ -8,7 +8,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class JobTitle extends Model
 {
     use SoftDeletes;
-    protected $guarded = ['id'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'company_id',
+        'location_id',
+        'department_id',
+        'name',
+        'about',
+        'is_dept_head',
+    ];
 
     /**
      * The attributes that should be mutated to dates.

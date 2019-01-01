@@ -16,7 +16,22 @@ class User extends Model implements JWTSubject, AuthenticatableContract, Authori
     const STATUS_ACTIVE             = 'active';
     const STATUS_NON_ACTIVE         = 'non_active';
     const STATUS_NEED_ACTIVATION    = 'need_activation';
-    protected $guarded = ['id'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'password',
+        'avatar',
+        'identity_number',
+        'driver_license',
+        'status',
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
