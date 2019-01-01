@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Company as CompanyResource;
+use App\Http\Resources\JobTitle as JobTitleResource;
 use App\Http\Resources\User as UserResource;
 use App\Models\User;
 use App\Services\CompanyService;
@@ -64,7 +66,9 @@ class AuthController extends Controller
 
         return response()->json([
             'token' => $token,
-            'user' => $this->jwt->user()
+            'user' => new UserResource($this->jwt->user()),
+            'company' => new CompanyResource($this->jwt->user()->company),
+            'jobtitle' => JobTitleResource::collection($this->jwt->user()->jobTitles)
         ]);
     }
 
