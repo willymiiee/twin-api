@@ -8,7 +8,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Trip extends Model
 {
     use SoftDeletes;
-    protected $guarded = ['id'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'company_id',
+        'type',
+        'user_id',
+        'created_by',
+        'updated_by',
+    ];
 
     /**
      * The attributes that should be mutated to dates.
