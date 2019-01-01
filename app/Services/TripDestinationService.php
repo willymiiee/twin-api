@@ -27,7 +27,8 @@ class TripDestinationService
 
     public function update($tripId, $id, $data = [])
     {
-        $item = TripDestination::where('trip_id', $tripId)->findOrFail($id)->update($data);
+        $item = TripDestination::where('trip_id', $tripId)->findOrFail($id);
+        $item->update($data);
 
         if (array_key_exists('latitude', $data) && array_key_exists('longitude', $data)) {
             $item->store->update($data);

@@ -39,7 +39,8 @@ class LocationService
 
     public function update($companyId, $data = [], $id)
     {
-        Location::where('company_id', $companyId)->findOrFail($id)->update($data);
+        $item = Location::where('company_id', $companyId)->findOrFail($id);
+        $item->update($data);
     }
 
     public function delete($companyId, $id)

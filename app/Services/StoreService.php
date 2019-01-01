@@ -35,7 +35,8 @@ class StoreService
 
     public function update($data = [], $id)
     {
-        Store::where('company_id', $data['company_id'])->findOrFail($id)->update($data);
+        $item = Store::where('company_id', $data['company_id'])->findOrFail($id);
+        $item->update($data);
     }
 
     public function delete($companyId, $id)

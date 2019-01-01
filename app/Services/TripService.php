@@ -61,7 +61,8 @@ class TripService
     {
         $storeService = app(StoreService::class);
         $destination = [];
-        $item = Trip::where('company_id', $data['company_id'])->findOrFail($id)->update($data);
+        $item = Trip::where('company_id', $data['company_id'])->findOrFail($id);
+        $item->update($data);
 
         if (array_key_exists('destination', $data)) {
             foreach ($data['destination'] as $d) {
