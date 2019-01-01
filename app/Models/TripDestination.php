@@ -8,8 +8,29 @@ class TripDestination extends Model
 {
     const STATUS_INCOMPLETE  = 'incomplete';
     const STATUS_COMPLETE    = 'complete';
-    public $timestamps = false;
-    protected $guarded = ['id'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'trip_id',
+        'store_id',
+        'latitude',
+        'longitude',
+        'status',
+    ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+    ];
 
     public function trip()
     {
