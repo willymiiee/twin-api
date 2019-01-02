@@ -18,9 +18,8 @@ class TripDestination extends Resource
         return [
             'id' => $this->id,
             'name' => $store->name,
-            'address' => $store->address,
-            'latitude' => $store->latitude,
-            'longitude' => $store->longitude,
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
             'status' => $this->status,
         ];
     }
