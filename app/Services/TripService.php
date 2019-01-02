@@ -13,10 +13,11 @@ class TripService
         # code...
     }
 
-    public function list($companyId, $perPage = 5, $userId = null)
+    public function list($companyId, $perPage = 5, $userId = null, $status = null)
     {
         $items = Trip::where('company_id', $companyId);
         $items = $userId ? $items->where('user_id', $userId) : $items;
+        $items = $status ? ($status == 'completed' ? $items->whereNotNull('ended_at') : $items->whereNull('ended_at')) : $items;
         $items = $items->paginate((int)$perPage);
         return TripResource::collection($items);
     }
