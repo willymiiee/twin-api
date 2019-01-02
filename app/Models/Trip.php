@@ -20,6 +20,8 @@ class Trip extends Model
         'user_id',
         'created_by',
         'updated_by',
+        'started_at',
+        'ended_at',
     ];
 
     /**
@@ -28,8 +30,6 @@ class Trip extends Model
      * @var array
      */
     protected $dates = [
-        'started_at',
-        'ended_at',
         'created_at',
         'updated_at',
     ];
