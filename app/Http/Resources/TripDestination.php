@@ -21,6 +21,7 @@ class TripDestination extends Resource
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
             'status' => $this->status,
+            'checked' => $this->status == 'complete',
         ];
     }
 }
