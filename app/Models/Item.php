@@ -21,6 +21,11 @@ class Item extends Model
         'deleted_at'
     ];
 
+    public function prices()
+    {
+        return $this->hasMany('App\Models\ItemPrice');
+    }
+
     public function company()
     {
         return $this->belongsTo('App\Models\Company');
@@ -29,5 +34,20 @@ class Item extends Model
     public function tripDestinations()
     {
         return $this->belongsToMany('App\Models\TripDestinationItem');
+    }
+
+    public function creator()
+    {
+        return $this->belongsTo('App\Models\User', 'created_by');
+    }
+
+    public function updater()
+    {
+        return $this->belongsTo('App\Models\User', 'updated_by');
+    }
+
+    public function deleter()
+    {
+        return $this->belongsTo('App\Models\User', 'deleted_by');
     }
 }
