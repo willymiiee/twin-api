@@ -14,5 +14,6 @@ return [
         'item',
         'warehouse',
         'depot',
+        'team',
     ]
 ];
