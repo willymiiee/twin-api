@@ -85,6 +85,14 @@ $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
                 });
             });
         });
+
+        $router->group(['prefix' => 'warehouse'], function () use ($router) {
+            $router->get('/', 'WarehouseController@index');
+            $router->post('/', 'WarehouseController@store');
+            $router->get('{warehouseId}', 'WarehouseController@show');
+            $router->put('{warehouseId}', 'WarehouseController@update');
+            $router->delete('{warehouseId}', 'WarehouseController@destroy');
+        });
     });
 
     $router->group(['prefix' => 'user'], function () use ($router) {
