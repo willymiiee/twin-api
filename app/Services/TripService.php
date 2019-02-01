@@ -48,13 +48,9 @@ class TripService
                 'name' => $d,
             ];
 
-            $destination[] = [
-                'store_id' => $storeService->create($store)->id,
-                'trip_id' => $item->id,
-            ];
+            $item->destinations()->attach($storeService->create($store)->id);
         }
 
-        $item->destinations()->createMany($destination);
         return $item;
     }
 
@@ -77,10 +73,9 @@ class TripService
                     'trip_id' => $item->id
                 ];
             }
-
-            $item->destinations()->delete();
-            $item->destinations()->createMany($destination);
         }
+
+        $item->destinations()->sync($destination);
     }
 
     public function delete($companyId, $id)
