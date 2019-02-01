@@ -88,4 +88,9 @@ class User extends Model implements JWTSubject, AuthenticatableContract, Authori
     {
         return $this->hasOne('App\Models\UserActivation');
     }
+
+    public function team()
+    {
+        return $this->belongsToMany('App\Models\Team', 'user_team')->withPivot('code', 'area');
+    }
 }

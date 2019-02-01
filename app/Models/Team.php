@@ -23,7 +23,7 @@ class Team extends Model
 
     public function salesmen()
     {
-        return $this->belongsToMany('App\Models\User', 'user_team');
+        return $this->belongsToMany('App\Models\User', 'user_team')->withPivot('code', 'area');
     }
 
     public function company()
