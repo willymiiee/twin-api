@@ -12,5 +12,7 @@ return [
         'trip',
         'store',
         'item',
+        'warehouse',
+        'depot',
     ]
 ];
