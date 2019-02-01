@@ -101,6 +101,14 @@ $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
             $router->put('{depotId}', 'DepotController@update');
             $router->delete('{depotId}', 'DepotController@destroy');
         });
+
+        $router->group(['prefix' => 'team'], function () use ($router) {
+            $router->get('/', 'TeamController@index');
+            $router->post('/', 'TeamController@store');
+            $router->get('{teamId}', 'TeamController@show');
+            $router->put('{teamId}', 'TeamController@update');
+            $router->delete('{teamId}', 'TeamController@destroy');
+        });
     });
 
     $router->group(['prefix' => 'user'], function () use ($router) {
