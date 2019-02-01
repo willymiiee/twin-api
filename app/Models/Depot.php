@@ -21,6 +21,11 @@ class Depot extends Model
         'deleted_at'
     ];
 
+    public function teams()
+    {
+        return $this->hasMany('App\Models\Team');
+    }
+
     public function company()
     {
         return $this->belongsTo('App\Models\Company');

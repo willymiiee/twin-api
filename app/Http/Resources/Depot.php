@@ -27,6 +27,7 @@ class Depot extends Resource
             'district' => $this->district,
             'subdistrict' => $this->subdistrict,
             'village' => $this->village,
+            'team' => $this->teams,
             'created_at' => $this->created_at,
             'created_by' => $this->creator,
             'updated_at' => $this->updated_at,
