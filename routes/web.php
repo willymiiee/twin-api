@@ -109,6 +109,14 @@ $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
             $router->put('{teamId}', 'TeamController@update');
             $router->delete('{teamId}', 'TeamController@destroy');
         });
+
+        $router->group(['prefix' => 'principal'], function () use ($router) {
+            $router->get('/', 'PrincipalController@index');
+            $router->post('/', 'PrincipalController@store');
+            $router->get('{principalId}', 'PrincipalController@show');
+            $router->put('{principalId}', 'PrincipalController@update');
+            $router->delete('{principalId}', 'PrincipalController@destroy');
+        });
     });
 
     $router->group(['prefix' => 'user'], function () use ($router) {
