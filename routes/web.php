@@ -23,6 +23,8 @@ $router->post('login', 'AuthController@login');
 $router->post('register', 'AuthController@register');
 $router->get('activate/{token}', 'AuthController@activate');
 
+$router->get('region', 'RegionController@index');
+
 $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
     $router->group(['prefix' => 'admin'], function () use ($router) {
         $router->group(['prefix' => 'company'], function () use ($router) {
