@@ -20,6 +20,9 @@ class TripDestination extends Model
         'latitude',
         'longitude',
         'status',
+        'payment_type',
+        'term_of_payment',
+        'limit',
     ];
 
     /**

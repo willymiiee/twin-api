@@ -34,9 +34,19 @@ class Trip extends Model
         'updated_at',
     ];
 
+    public function destinations()
+    {
+        return $this->hasMany('App\Models\TripDestination');
+    }
+
     public function company()
     {
         return $this->belongsTo('App\Models\Company');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo('App\Models\Team');
     }
 
     public function driver()
@@ -44,8 +54,18 @@ class Trip extends Model
         return $this->belongsTo('App\Models\User', 'user_id');
     }
 
-    public function destinations()
+    public function creator()
     {
-        return $this->hasMany('App\Models\TripDestination');
+        return $this->belongsTo('App\Models\User', 'created_by');
+    }
+
+    public function updater()
+    {
+        return $this->belongsTo('App\Models\User', 'updated_by');
+    }
+
+    public function deleter()
+    {
+        return $this->belongsTo('App\Models\User', 'deleted_by');
     }
 }

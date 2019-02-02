@@ -34,6 +34,11 @@ class Team extends Model
         'deleted_at'
     ];
 
+    public function trips()
+    {
+        return $this->hasMany('App\Models\Trip');
+    }
+
     public function salesmen()
     {
         return $this->belongsToMany('App\Models\User', 'user_team')->withPivot('code', 'area');
