@@ -68,6 +68,7 @@ class StoreController extends Controller
 
         $input = $request->all();
         $input['company_id'] = $this->user->company->id;
+        $input['created_by'] = $this->user->id;
 
         $this->storeService->create($input);
         return response()->json([], 201);
