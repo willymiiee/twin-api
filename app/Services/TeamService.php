@@ -31,13 +31,15 @@ class TeamService
         $item = Team::firstOrCreate($data);
         $item->save();
 
-        foreach ($data['salesman'] as $s) {
-            $data = [
-                'code' => $s['code'],
-                'area' => $s['area'],
-            ];
+        if (array_key_exists('salesman', $data)) {
+            foreach ($data['salesman'] as $s) {
+                $data = [
+                    'code' => $s['code'],
+                    'area' => $s['area'],
+                ];
 
-            $item->salesmen()->attach($s['id'], $data);
+                $item->salesmen()->attach($s['id'], $data);
+            }
         }
 
         return $item;
