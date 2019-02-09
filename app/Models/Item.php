@@ -27,6 +27,11 @@ class Item extends Model
         return $this->hasMany('App\Models\ItemPrice');
     }
 
+    public function stocks()
+    {
+        return $this->hasMany('App\Models\ItemStock');
+    }
+
     public function company()
     {
         return $this->belongsTo('App\Models\Company');

@@ -22,6 +22,8 @@ class Item extends Resource
             'weight_unit' => $this->weight_unit,
             'unit' => $this->unit,
             'contents' => $this->contents,
+            'prices' => $this->prices,
+            'stocks' => $this->stocks,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ItemPrice extends Model
+class ItemStock extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,8 +13,9 @@ class ItemPrice extends Model
      */
     protected $fillable = [
         'item_code',
-        'type',
-        'price',
+        'warehouse_id',
+        'qty',
+        'qty_pcs',
         'created_by',
         'updated_by',
     ];
@@ -32,6 +33,11 @@ class ItemPrice extends Model
     public function item()
     {
         return $this->belongsTo('App\Models\Item');
+    }
+
+    public function warehouse()
+    {
+        return $this->belongsTo('App\Models\Warehouse');
     }
 
     public function creator()
