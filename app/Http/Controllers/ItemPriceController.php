@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\ItemService;
 use App\Services\ItemPriceService;
 use Tymon\JWTAuth\JWTAuth;
 
@@ -18,7 +17,6 @@ class ItemPriceController extends Controller
     protected $jwt;
     protected $user;
     protected $roles = [];
-    protected $itemService;
     protected $priceService;
 
     /**
@@ -28,12 +26,10 @@ class ItemPriceController extends Controller
      */
     public function __construct(
         JWTAuth $jwt,
-        ItemService $itemService,
         ItemPriceService $priceService
     ) {
         $this->jwt = $jwt;
         $this->user = $this->jwt->user();
-        $this->itemService = $itemService;
         $this->priceService = $priceService;
         $this->roles = $this->user->jobTitles[0]->roles->where('module_id', 10)->first();
     }
