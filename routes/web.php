@@ -123,9 +123,16 @@ $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
         $router->group(['prefix' => 'item'], function () use ($router) {
             $router->get('/', 'ItemController@index');
             $router->post('/', 'ItemController@store');
-            $router->get('{itemId}', 'ItemController@show');
-            $router->put('{itemId}', 'ItemController@update');
-            $router->delete('{itemId}', 'ItemController@destroy');
+            $router->group(['prefix' => '{itemCode}'], function () use ($router) {
+                $router->get('/', 'ItemController@show');
+                $router->put('/', 'ItemController@update');
+                $router->delete('/', 'ItemController@destroy');
+
+                $router->group(['prefix' => 'price'], function () use ($router) {
+                    $router->get('/', 'ItemPriceController@index');
+                    $router->post('/', 'ItemPriceController@store');
+                });
+            });
         });
     });
 
