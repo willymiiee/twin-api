@@ -23,7 +23,12 @@ class Warehouse extends Model
 
     public function depots()
     {
-        return $this->hasMany('App\Models\Depots');
+        return $this->hasMany('App\Models\Depot');
+    }
+
+    public function stocks()
+    {
+        return $this->hasMany('App\Models\ItemStock');
     }
 
     public function company()

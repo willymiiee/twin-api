@@ -91,9 +91,19 @@ $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
         $router->group(['prefix' => 'warehouse'], function () use ($router) {
             $router->get('/', 'WarehouseController@index');
             $router->post('/', 'WarehouseController@store');
-            $router->get('{warehouseId}', 'WarehouseController@show');
-            $router->put('{warehouseId}', 'WarehouseController@update');
-            $router->delete('{warehouseId}', 'WarehouseController@destroy');
+            $router->group(['prefix' => '{warehouseId}'], function () use ($router) {
+                $router->get('/', 'WarehouseController@show');
+                $router->put('/', 'WarehouseController@update');
+                $router->delete('/', 'WarehouseController@destroy');
+
+                $router->group(['prefix' => 'stock'], function () use ($router) {
+                    $router->get('/', 'ItemStockController@index');
+                    $router->post('/', 'ItemStockController@store');
+                    $router->get('{stockId}', 'ItemStockController@show');
+                    $router->put('{stockId}', 'ItemStockController@update');
+                    $router->delete('{stockId}', 'ItemStockController@destroy');
+                });
+            });
         });
 
         $router->group(['prefix' => 'depot'], function () use ($router) {

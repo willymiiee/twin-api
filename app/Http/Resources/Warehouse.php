@@ -29,6 +29,7 @@ class Warehouse extends Resource
             'subdistrict' => $this->subdistrict,
             'village' => $this->village,
             'note' => $this->note,
+            'stocks' => $this->stocks,
             'created_at' => $this->created_at,
             'created_by' => $this->creator,
             'updated_at' => $this->updated_at,

@@ -16,5 +16,6 @@ return [
         'depot',
         'team',
         'principal',
+        'stock',
     ]
 ];
